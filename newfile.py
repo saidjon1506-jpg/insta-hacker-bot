@@ -1,21 +1,18 @@
 import telebot
 from telebot import types
 
-# Sizning bot tokeningiz
+# Tokeningizni tekshiring, u qo'shtirnoq ichida bo'lishi shart
 token = '7742131379:AAHAnY-T_Ld5A_wY8UOfvP77Lz-vN9yGogU'
 bot = telebot.TeleBot(token)
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    # Tugmalarni yasash
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    
     btn_hack = types.KeyboardButton('🔑 Insta Hack')
     btn_stats = types.KeyboardButton('📊 Statistika')
     btn_help = types.KeyboardButton('❓ Yordam')
     btn_settings = types.KeyboardButton('⚙️ Sozlamalar')
     
-    # Tugmalarni botga joylash
     markup.add(btn_hack)
     markup.add(btn_stats, btn_help, btn_settings)
     
@@ -26,21 +23,15 @@ def start(message):
 def handle_messages(message):
     if message.text == '🔑 Insta Hack':
         bot.send_message(message.chat.id, "Target (qurbon) nikini kiriting:")
-        
     elif message.text == '📊 Statistika':
-        # Bu yerda taxminiy statistika
         bot.send_message(message.chat.id, "📈 Bot holati: Online\n👥 Foydalanuvchilar: 1,254 ta\n✅ Muvaffaqiyatli tahlillar: 842 ta")
-        
     elif message.text == '❓ Yordam':
-        # Admin kontaktini shu yerga qo'ydim
-        bot.send_message(message.chat.id, "🆘 Muammo yuzaga kelsa yoki savollaringiz bo'lsa, adminga murojaat qiling:\n\n👨‍💻 Admin: @saidjon_mc1")
-        
+        bot.send_message(message.chat.id, "🆘 Muammo yuzaga kelsa, adminga murojaat qiling:\n\n👨‍💻 Admin: @saidjon_mc1")
     elif message.text == '⚙️ Sozlamalar':
         bot.send_message(message.chat.id, "⚙️ Sozlamalar bo'limi hozircha tahrirlash jarayonida.")
-    
     else:
-        # Agar foydalanuvchi nik yozsa
         bot.send_message(message.chat.id, f"🔍 {message.text} tahlil qilinmoqda...\n⌛ Iltimos, 1-2 daqiqa kuting...")
 
-# Botni ishga tushirish
-bot.polling(none_stop=True)
+# Buni o'zgartirmang
+if __name__ == "__main__":
+    bot.polling(none_stop=True)
