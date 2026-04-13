@@ -1,7 +1,7 @@
 import telebot
 from telebot import types
 
-# Tokeningizni tekshiring, u qo'shtirnoq ichida bo'lishi shart
+# Tokeningizni tekshiring (Siz yuborgan token)
 token = '7742131379:AAHAnY-T_Ld5A_wY8UOfvP77Lz-vN9yGogU'
 bot = telebot.TeleBot(token)
 
@@ -28,10 +28,11 @@ def handle_messages(message):
     elif message.text == '❓ Yordam':
         bot.send_message(message.chat.id, "🆘 Muammo yuzaga kelsa, adminga murojaat qiling:\n\n👨‍💻 Admin: @saidjon_mc1")
     elif message.text == '⚙️ Sozlamalar':
-        bot.send_message(message.chat.id, "⚙️ Sozlamalar bo'limi hozircha tahrirlash jarayonida.")
+        bot.send_message(message.chat.id, "⚙️ Sozlamalar bo'limi tahrirlash jarayonida.")
     else:
+        # Bu qism nik yozilganda ishlaydi
         bot.send_message(message.chat.id, f"🔍 {message.text} tahlil qilinmoqda...\n⌛ Iltimos, 1-2 daqiqa kuting...")
 
-# Buni o'zgartirmang
+# Render uchun muhim qism
 if __name__ == "__main__":
     bot.polling(none_stop=True)
